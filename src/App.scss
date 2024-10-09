@@ -1,6 +1,5 @@
-@charset "UTF-8";
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   text-align: center;
   background: linear-gradient(135deg, #74ebd5, #acb6e5);
   margin: 0;
@@ -27,17 +26,19 @@ body {
   align-items: center;
   justify-content: center;
   margin-bottom: 20px;
-}
-#header h1 {
-  margin: 0;
-  margin-right: 10px;
-  font-size: 2.5em;
-  color: #333;
-}
-#header img {
-  height: auto;
-  max-height: 60px;
-  width: auto;
+
+  h1 {
+    margin: 0;
+    margin-right: 10px;
+    font-size: 2.5em;
+    color: #333;
+  }
+
+  img {
+    height: auto;
+    max-height: 60px;
+    width: auto;
+  }
 }
 
 #subText {
@@ -91,16 +92,19 @@ body {
   cursor: pointer;
   transition: background 0.3s ease;
   margin-top: 10px;
-}
-.button:hover {
-  background: #4cd3c2;
-}
-.button.tweet {
-  background: #1da1f2;
-  color: white;
-}
-.button.tweet:hover {
-  background: #0d8bf2;
+
+  &:hover {
+    background: #4cd3c2;
+  }
+
+  &.tweet {
+    background: #1da1f2;
+    color: white;
+
+    &:hover {
+      background: #0d8bf2;
+    }
+  }
 }
 
 /* セレクトボックス */
@@ -112,28 +116,27 @@ body {
   border: 1px solid #bbbbbb;
   border-radius: 2px;
   width: 225px;
+
+  &::before {
+    position: absolute;
+    right: 15px;
+    content: '';
+    width: 12px;
+    height: 8px;
+    background: #666666;
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+  }
+
+  select {
+    width: 100%;
+    padding: 10px 45px 10px 10px;
+    color: #666666;
+    cursor: pointer;
+    text-overflow: ellipsis;
+    z-index: 1;
+    border: none;
+    appearance: none;
+    outline: none;
+    background: transparent;
+  }
 }
-.select-box::before {
-  position: absolute;
-  right: 15px;
-  content: "";
-  width: 12px;
-  height: 8px;
-  background: #666666;
-  -webkit-clip-path: polygon(0 0, 100% 0, 50% 100%);
-          clip-path: polygon(0 0, 100% 0, 50% 100%);
-}
-.select-box select {
-  width: 100%;
-  padding: 10px 45px 10px 10px;
-  color: #666666;
-  cursor: pointer;
-  text-overflow: ellipsis;
-  z-index: 1;
-  border: none;
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
-  outline: none;
-  background: transparent;
-}/*# sourceMappingURL=App.css.map */

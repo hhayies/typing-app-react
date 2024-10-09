@@ -1,4 +1,5 @@
 import { useState } from "react";
+import words from "../data/words"
 
 const Typing = () => {
   const [isGameStarted, setIsGameStarted] = useState(false);
@@ -53,6 +54,7 @@ const Typing = () => {
       setQuestionRemaining(questionRemaining - 1);
       if (questionRemaining > 0) {
         displayNewWord();
+        setMistakeCount(mistakeCount + 1);
       } else {
         endGameSequence();
       }
@@ -80,16 +82,18 @@ const Typing = () => {
       {!isGameStarted && !isGameOver && (
         <div id="settings" className="card">
           <label htmlFor="questionSelect">出題数を選んでください:</label>
-          <select
-            id="questionSelect"
-            value={questionLimit}
-            onChange={(e) => setQuestionLimit(Number(e.target.value))}
-          >
-            <option value="10">10問</option>
-            <option value="20">20問</option>
-            <option value="30">30問</option>
-          </select>
-          <button id="startButton" className="button" onClick={startGame}>
+          <div className="select-box">
+            <select
+              id="questionSelect"
+              value={questionLimit}
+              onChange={(e) => setQuestionLimit(Number(e.target.value))}
+            >
+              <option value="10">10問</option>
+              <option value="20">20問</option>
+              <option value="30">30問</option>
+            </select>
+          </div>
+          <button type="button" id="startButton" className="button" onClick={startGame}>
             開始
           </button>
         </div>
@@ -116,6 +120,7 @@ const Typing = () => {
             <span id="correctAnswers">{score}</span> 点 /{" "}
             <span id="totalQuestions">{questionLimit}</span> 問でした。
           </div>
+          <p>間違った数: {mistakeCount}</p>
           <button id="retryButton" className="button" onClick={handleRetry}>
             再チャレンジ
           </button>
