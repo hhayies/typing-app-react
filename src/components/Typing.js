@@ -41,6 +41,26 @@ const Typing = () => {
     setIsGameOver(false);
   };
 
+  const handleMistakes = () => {
+    setQuestionRemaining(questionRemaining - 1);
+    if (questionRemaining > 0) {
+      displayNewWord();
+      setMistakeCount(mistakeCount + 1);
+    } else {
+      endGameSequence();
+    }
+  }
+
+  const handleCorrect = () => {
+    setScore(score + 1);
+    setQuestionRemaining(questionRemaining - 1);
+    if (questionRemaining > 0) {
+      displayNewWord();
+    } else {
+      endGameSequence();
+    }
+  }
+
   const handleInputChange = (e) => {
     const userInputValue = e.target.value;
     setUserInput(userInputValue);
@@ -53,21 +73,9 @@ const Typing = () => {
     }
 
     if (mistakes >= 2) {
-      setQuestionRemaining(questionRemaining - 1);
-      if (questionRemaining > 0) {
-        displayNewWord();
-        setMistakeCount(mistakeCount + 1);
-      } else {
-        endGameSequence();
-      }
+      handleMistakes();
     } else if (userInputValue === currentWord.roman) {
-      setScore(score + 1);
-      setQuestionRemaining(questionRemaining - 1);
-      if (questionRemaining > 0) {
-        displayNewWord();
-      } else {
-        endGameSequence();
-      }
+      handleCorrect();
     }
   };
 
